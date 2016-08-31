@@ -1,0 +1,3 @@
+playerData = [{"name" : "Tharkaad", "characterClass" : "Lycan", "agility" : "7", "strength" : "7", "speech" : "1", "inv" : { } },
+	{"name" : "Turkayyid", "characterClass" : "Highwayman",  "agility" : "6", "strength" : "4", "speech" : "5", "inv" : [{}]}
+];

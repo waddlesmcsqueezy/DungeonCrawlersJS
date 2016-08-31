@@ -1,0 +1,4 @@
+quests = {
+
+	"clearDungeon001" : {"name" : "Clear a dungeon.", "description" : "Clear a dungeon to recieve rewards", "exp" : , "reward" : , "itemReward" :, "stages" : }
+}

@@ -1,0 +1,6 @@
+items = {
+
+	"BASE_ITEM" : {"name" : "Item", "description" : "Description.", "value" : 1, "weight" : 1, "tier" : "WHITE", "sprite" : "assets/sword.png"},
+	"WEAPON_WHITE_SWORD_001" : {"name" : "Old Sword", "description" : "A rusty blade.", "value" : 25, "weight" : 5, "tier" : "WHITE", "sprite" : "assets/sword.png", "damage" : 5, "accuracy" : 85, "range" : 1, "skill" : "STRENGTH"},
+	"ARMOR_WHITE_CHEST_001" : {"name" : "Iron Chestpiece", "description" : "An antique. Found hanging over a fireplace.", "value" : 25, "weight" : 5, "tier" : "WHITE", "sprite" : "assets/armor.png", "protection" : 15, "skill" : "STRENGTH"}
+}
