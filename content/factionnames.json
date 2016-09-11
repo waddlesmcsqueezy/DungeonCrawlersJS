@@ -1,0 +1,163 @@
+preprefixes = {
+
+	"intelligent" : [
+		{"name" : "Federated"},
+		{"name" : "Galactic"},
+		{"name" : "Confederate"},
+		{"name" : "Imperial"},
+		{"name" : "United"},
+		{"name" : "Holy"},
+		{"name" : "Indivisible"},
+		{"name" : "Ascendant"}
+	],
+
+	"normal" : [
+		{"name" : "Democratic"},
+		{"name" : "Facist"},
+		{"name" : "Communist"},
+		{"name" : "Socilist"},
+		{"name" : "Nationalist"},
+		{"name" : "Pan-Nationalist"},
+		{"name" : "Cooperative"},
+		{"name" : "Sovereign"},
+		{"name" : "Free"},
+		{"name" : "Coalition"},
+	],
+
+	"primitive" : [
+		{"name" : "Grand"},
+		{"name" : "Hell's"},
+		{"name" : "Clan"},
+		{"name" : "Faction"},
+		{"name" : "Dragon's"},
+		{"name" : "Big"},
+		{"name" : "Falangist"}
+	]
+}
+
+prefixes = {
+
+	"intelligent" : [
+		{"name" : "Republic"},
+		{"name" : "Empire"},
+		{"name" : "Utopia"},
+		{"name" : "Union"},
+		{"name" : "Worlds"},
+		{"name" : "Protectorate"},
+		{"name" : "Rim"},
+		{"name" : "Supremacy"}
+	],
+
+	"normal" : [
+		{"name" : "Sovereignty"},
+		{"name" : "Alliance"},
+		{"name" : "Democracy"},
+		{"name" : "Clan"},
+		{"name" : "House"},
+		{"name" : "Federation"},
+		{"name" : "Confederation"},
+		{"name" : "Nationalists"}
+	],
+
+	"primitive" : [
+		{"name" : "Word"},
+		{"name" : "Storm"},
+		{"name" : "Fist"},
+		{"name" : "Fire"},
+		{"name" : "Will"},
+		{"name" : "Voice"},
+		{"name" : "Dominion"}
+	]
+}
+
+suffixes = {
+
+	"intelligent" : [
+		{"name" : "Collective"},
+		{"name" : "Conglomerate"},
+		{"name" : "Empire"},
+		{"name" : "Dynasty"},
+		{"name" : "Imperium"},
+		{"name" : "Suns"},
+		{"name" : "In-Exile"},
+		{"name" : "Alliance"},
+		{"name" : "League"},
+		{"name" : "Cordon"},
+		{"name" : "Concordat"},
+		{"name" : "Illuminate"}
+	],
+
+	"normal" : [
+		{"name" : "Kingdom"},
+		{"name" : "Union"},
+		{"name" : "Commonwealth"},
+		{"name" : "Protectorate"},
+		{"name" : "Theocracy"},
+		{"name" : "Syndicate"},
+		{"name" : "Corporation"},
+		{"name" : "In-Exile"},
+		{"name" : "Combine"}
+	],
+
+	"primitive" : [
+		{"name" : "In-Exile"},
+		{"name" : "Fury"},
+		{"name" : "Clan"},
+		{"name" : "Syndicate"},
+		{"name" : "Raiders"},
+		{"name" : "Dominion"},
+		{"name" : "Covenant"}
+	]
+}
+
+names = {
+
+	"intelligent" : [
+		{"name" : "Yore"},
+		{"name" : "Aeon"},
+		{"name" : "Cyberion"},
+		{"name" : "Corex"},
+		{"name" : "Solus"},
+		{"name" : "Seraph"},
+		{"name" : "Ceph"},
+		{"name" : "Nanus"},
+		{"name" : "Janus"},
+		{"name" : "Jupiter"},
+		{"name" : "Exo"},
+		{"name" : "Marik"},
+		{"name" : "Stellan"},
+		{"name" : "Cellatus"},
+		{"name" : "Hyatus"},
+		{"name" : "Vex"},
+		{"name" : "Lyran"}
+	],
+
+	"normal" : [
+		{"name" : "Terra"},
+		{"name" : "Capello"},
+		{"name" : "Hyareth"},
+		{"name" : "Corpan"},
+		{"name" : "Bolsheviki"},
+		{"name" : "Yiaoshi"},
+		{"name" : "Iaray"},
+		{"name" : "Yendesh"},
+	],
+
+	"primitive" : [
+		{"name" : "Horses"},
+		{"name" : "Kell"},
+		{"name" : "Wolves"},
+		{"name" : "Wolf"},
+		{"name" : "Hounds"},
+		{"name" : "Bulls"},
+		{"name" : "Sharks"},
+		{"name" : "Jadus"},
+		{"name" : "Mobius"},
+		{"name" : "Flood"},
+		{"name" : "Elite"},
+		{"name" : "Jaguar"},
+		{"name" : "Mandrill"},
+		{"name" : "Fallen"},
+		{"name" : "Hive"}
+	]
+}

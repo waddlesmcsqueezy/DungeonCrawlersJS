@@ -1,7 +1,4 @@
-"use strict";
 
-require("fs")
-require('./content/itemnames')
 
 var intelligentPrePrefixes = preprefixes.intelligent;
 var intelligentPrefixes = prefixes.intelligent;
@@ -52,24 +49,25 @@ class Name {
 
 function createRandomInhabitant(description) {
 
-	var type = new InhabitantType();
+	var inhabitant;
 
 	if (type.intelligence < 5) {
-		var Name = new Inhabitant(pickRandomName(primitivePrePrefixes,primitivePrefixes,
+		var inhabitant = new Inhabitant(pickRandomName(primitivePrePrefixes,primitivePrefixes,
 			primitiveNames,primitiveSuffixes), description, type);
 	}
 
 	if (type.intelligence < 8 && type.intelligence >= 5) {
-		var Name = new Inhabitant(pickRandomName(normalPrePrefixes, normalPrefixes, normalNames, normalSuffixes), description, type);
+		var inhabitant = new Inhabitant(pickRandomName(normalPrePrefixes, normalPrefixes, normalNames, normalSuffixes), description, type);
 	}
 
 	if (type.intelligence >= 8) {
-		var Name = new Inhabitant(pickRandomName(intelligentPrePrefixes, intelligentPrefixes,
+		var inhabitant = new Inhabitant(pickRandomName(intelligentPrePrefixes, intelligentPrefixes,
 			intelligentNames, intelligentSuffixes), description, type);
 	}
 
-	return Name;
+	return inhabitant;
 }
 
-console.log(Name);
-console.log(Name.type);
+inhabitant = createRandomInhabitant("Placeholder");
+console.log(inhabitant);
+console.log(inhabitant.type);

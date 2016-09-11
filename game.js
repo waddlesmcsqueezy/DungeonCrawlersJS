@@ -6,6 +6,35 @@ var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'Dungeon Crawlers', {
 
 const WORLD_SCALE = 64;
 
+//DEFINE PATHFINDING V
+
+// var pathfinder = new EasyStar.js();
+
+// pathfinder.setGrid([1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+// 	             [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+// 	             [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+// 	             [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+// 	             [1,0,0,0,0,0,0,0,0,1,1,0,0,0,0,1],
+// 	             [1,0,0,0,0,0,0,1,1,1,0,0,0,0,0,1],
+// 	             [1,0,0,0,0,0,1,1,0,0,0,0,0,0,0,1],
+// 	             [1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1],
+// 	             [1,0,0,0,0,1,1,0,0,0,0,1,0,0,0,1],
+// 	             [1,0,0,0,1,1,0,0,0,0,1,1,1,0,0,1],
+// 	             [1,0,0,0,1,0,0,0,0,0,1,1,1,0,0,1],
+// 	             [1,0,0,0,0,0,0,0,0,1,1,1,0,0,0,1],
+// 	             [1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1],
+// 	             [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+// 	             [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+// 	             [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]);
+
+// pathfinder.setAcceptableTiles([0]);
+
+var pathfinder;
+
+//END PATHFINDING ^
+
+//DEFINE ENUMS! V
+
 var abilityTypes = {
     PROC: 1,
     PASSIVE: 2,
@@ -15,6 +44,21 @@ var abilityTypes = {
 var potionTypes = {
     HEALTH: 1,
     BUFF: 2
+}
+
+itemTypes = {
+	WEAPON: 1, // weapon
+	ARMOR: 2, //armor item
+	FOOD: 3, //food item
+	AID: 4, // aid/health item
+	DRUG: 5, //drug
+	PART: 6, //crafting ingredient
+	QST: 7, //quest item
+}
+
+weaponTypes = {
+	MELEE: 1,
+	RANGED: 2,
 }
 
 var itemTiers = {
@@ -38,6 +82,10 @@ var equipSlots = {
     TWO: 3
 }
 
+//END ENUMS ^
+
+//BEING LOADING V
+
 function preload() {
 
     game.load.image('highwayman', 'assets/highwayman_idle.png');
@@ -46,7 +94,14 @@ function preload() {
     game.load.image('tiles', 'assets/spritesheet.png');
 
     game.load.image('error', 'assets/error.png');
+
+    game.load.image('hint', 'assets/hint.png');
+    game.load.image('inv', 'assets/inv.png');
 }
+
+//END LOADING ^
+
+//CREATE GAME WORLD V
 
 var map;
 var layer;
@@ -65,17 +120,39 @@ function create() {
 
     map = new GameMap('map', 'wall', 'floor', 'objects', 'tiles');
 
-    player = new Actor('name', 'placeholder', 10, 10, 10, 'highwayman', 64, 64, true);
+    player = new Actor('player', 'placeholder', 10, 10, 10, 'highwayman', 64, 64, true);
+
+    enemy = new Actor('enemy1', 'placeholder', 10, 10, 10, 'highwayman', 64, 64, true);
 
     player.sprite.position.setTo(64, 64);
 
-    console.log(player.gridX)
-    console.log(player.gridY)
+    enemy.sprite.position.setTo(128, 64);
+
+    console.log(player.gridX);
+    console.log(player.gridY);
+
+    hint = game.add.sprite(0,0,'hint');
+    hint.scale.setTo(3,3);
+    hint.smoothed = false;
+    hint.visible = false;
+
+    var walkables = [1];
+
+    pathfinder = game.plugins.add(Phaser.Plugin.PathFinderPlugin);
+    pathfinder.setGrid(map.tileMap.layers[0].data, walkables);
 
     // game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 }
 
+//END CREATING GAME WORLD ^
+
+//GAME LOOP V
+
 function update() {
+
+	hint.x = game.input.mousePointer.x;
+
+	hint.y = game.input.mousePointer.y - hint.height;
 
     game.camera.x = (player.sprite.x - (game.width / 2)) + 32;
     game.camera.y = (player.sprite.y - (game.height / 2)) + 32;
@@ -134,8 +211,6 @@ function update() {
         }
     }
 
-    console.log(player.turnsLeft);
-
     if (player.turnsLeft <= 0) {
 
         //enemy turn
@@ -146,24 +221,19 @@ function update() {
 
 }
 
-class Actor {
-    constructor(name, characterClass, agility, strength, speech, sprite, isPlayer) {
+//END OF GAME LOOP
 
-        //fluff & stats
-        this.name = name;
-        this.characterClass = characterClass;
-        this.agility = agility;
-        this.strength = strength;
-        this.speech = speech;
-        this.health = ((((this.strength + this.agility) + 2) * 10) / 5);
+//BEGIN CLASS DEFINITIONS V
+
+class Actor {
+    constructor(name, characterClass, sprite) {
+    	this.name = name;
+
+    	this.characterClass = characterClass;
 
         //inventory
         this.maxWeight = (((this.strength + 5) * 15) / 1.5);
         this.inventory = [];
-
-        //abilities and perks  
-        this.skills;
-        this.perks;
 
         //turn based logic
         this.maxTurns = 1;
@@ -176,17 +246,9 @@ class Actor {
 
         this.sprite.smoothed = false;
 
+        //tile grid position - has nothing to do with graphics
         this.gridX = this.sprite.x / 64;
         this.gridY = this.sprite.y / 64;
-
-        this.isPlayer = isPlayer;
-
-        if (isPlayer) {
-            this.quests;
-            this.completedQuests;
-            this.bounties;
-            this.completedBounties;
-        }
     }
 
     getWallAbove(map) {
@@ -208,6 +270,16 @@ class Actor {
 
     getObjectUnder(map) {
         return map.tileMap.getTile(this.gridX, this.gridY, map.objects);
+    }
+
+    findPathTo(tilex, tiley) {
+        pathfinder.setCallbackFunction(function(path) {
+            path = path || [];
+        });
+
+        pathfinder.preparePathCalculation([0,0], [tilex,tiley]);
+        pathfinder.calculatePath();
+        console.log(path);
     }
 
     move(x, y) {
@@ -241,17 +313,13 @@ class Actor {
     }
 
     addItemToInventory(item) {
-        if (item == null) {
-            console.log("invalid item");
-        } else if (this.inventory[0] != null) {
-            if (item.weight + this.getInventoryWeight() < this.maxWeight) {
-                this.inventory.push(item);
-            } else {
-                console.log("Item would exceed carry limit.")
-            }
-        } else {
-            this.inventory.push(item);
-        }
+        if (item != null) {
+	        if (this.inventory[0] != null) {
+	            if (item.weight + this.getInventoryWeight() < this.maxWeight) {
+	                this.inventory.push(item);
+	            } else { console.log("Item would exceed carry limit."); }
+	        } else { this.inventory.push(item); }
+	    } else { console.log("DUNGEON CRAWLERS: Not a valid Item."); }
     }
 
     removeItemFromInventory(item) {
@@ -348,16 +416,45 @@ class Bounty {
 }
 
 class CharacterClass {
-    constructor(name, description, baseAgility, baseStrength, baseSpeech, skillTree) {
-        this.name = name;
-        this.description = description;
+    constructor(characterClass) {
+        //fluff & stats
+        this.name = characterClass.name;
+        this.description = characterClass.description;
+        this.agility = characterClass.baseAgility;
+        this.strength = characterClass.baseStrength;
+        this.speech = characterClass.baseSpeech;
+        this.health = ((((this.strength + this.agility) + 2) * 10) / 5);
 
-        this.baseAgility = baseAgility;
-        this.baseStrength = baseStrength;
-        this.baseSpeech = baseSpeech;
+        this.skillLevel = 0; //This is the player's current skill tree tier; starts at 0 for all skill trees; 
 
-        this.skillTree = skillTree;
+        this.quests;
+        this.completedQuests;
+        this.bounties;
+        this.completedBounties;
     }
+}
+
+class LycanClass extends CharacterClass {
+	constructor() {
+		super(classes.lycan);
+	}
+
+	proc() {
+		if (skillLevel == 0){
+			if (this.health < 0.20 * this.health) {this.transformToBeast();}
+		}
+	}
+
+	transformToBeast() {
+		this.agility += 5;
+		if(agility <= 0) {this.agility = 1;}
+		this.strength += 5;
+		if(strength <= 0) {this.strength = 1;}
+	}
+	transformFromBeast() {
+		this.agility -= 5;
+		this.strength -= 5;
+	}
 }
 
 class Item {
@@ -393,7 +490,7 @@ class Container {
 class LeveledList {
 	constructor(list) {
 		if (list == null) {
-			throw "DUNGEON CRAWLERS ERROR: LEVELED LIST INVALID OR DOESNT EXIST";
+			throw "DUNGEON CRAWLERS ERROR: LEVELED LIST INVALID OR DOESNT EXIST\n IF THIS ERROR CONTINUES, SEND THE DEVELOPER A SCREENSHOT OF THE CONSOLE.";
 		}
 	}
 }
