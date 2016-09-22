@@ -1,0 +1,1017 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"baseS",
+				"baseStrength"
+			],
+			[
+				"number",
+				"number"
+			],
+			[
+				"cipher",
+				"cipherText"
+			],
+			[
+				"dec",
+				"decryptedCode"
+			],
+			[
+				"de",
+				"decryptedCode"
+			],
+			[
+				"ci",
+				"cipherText"
+			],
+			[
+				"en",
+				"encryptedChar"
+			],
+			[
+				"russ",
+				"russianVoice1"
+			],
+			[
+				"p",
+				"position"
+			],
+			[
+				"cons",
+				"constructor"
+			],
+			[
+				"skill",
+				"skillTree"
+			],
+			[
+				"basS",
+				"baseStrength"
+			],
+			[
+				"base",
+				"baseAgility"
+			],
+			[
+				"item",
+				"itemReward"
+			],
+			[
+				"floo",
+				"floorIndex"
+			],
+			[
+				"gr",
+				"gridY"
+			],
+			[
+				"tur",
+				"turnsLeft"
+			],
+			[
+				"reset",
+				"resetTurns"
+			],
+			[
+				"get",
+				"getTile"
+			],
+			[
+				"pro",
+				"properties"
+			],
+			[
+				"upd",
+				"updateGrid"
+			],
+			[
+				"spri",
+				"sprite"
+			],
+			[
+				"flo",
+				"floorLayer"
+			],
+			[
+				"wall",
+				"wallLayer"
+			],
+			[
+				"co",
+				"constructor"
+			],
+			[
+				"sp",
+				"sprite"
+			],
+			[
+				"is",
+				"isMoving"
+			],
+			[
+				"se",
+				"strength"
+			],
+			[
+				"prePrefix",
+				"prePrefixArray"
+			],
+			[
+				"prefix",
+				"prefixArray"
+			],
+			[
+				"prePre",
+				"prePrefixArray"
+			],
+			[
+				"suff",
+				"suffixIndex"
+			],
+			[
+				"int",
+				"intelligence"
+			],
+			[
+				"intell",
+				"intelligentNames"
+			],
+			[
+				"Inhab",
+				"InhabitantType"
+			],
+			[
+				"in",
+				"intelligence"
+			],
+			[
+				"name",
+				"name"
+			],
+			[
+				"In",
+				"InhabitantType"
+			],
+			[
+				"c",
+				"constructor"
+			],
+			[
+				"crea",
+				"createPlanetButton"
+			],
+			[
+				"Player",
+				"Player"
+			],
+			[
+				"poke",
+				"pokemon2"
+			],
+			[
+				"type",
+				"type"
+			],
+			[
+				"ENEMY",
+				"ENEMY_YPOS"
+			],
+			[
+				"hide",
+				"hideText"
+			],
+			[
+				"text",
+				"textIsPlaying"
+			],
+			[
+				"v",
+				"visibility"
+			],
+			[
+				"tex",
+				"textIsPlaying"
+			],
+			[
+				"sele",
+				"selectMenuOption"
+			],
+			[
+				"right",
+				"rightKey"
+			],
+			[
+				"left",
+				"leftKey"
+			],
+			[
+				"up",
+				"upKey"
+			],
+			[
+				"player",
+				"playerTurn"
+			],
+			[
+				"curr",
+				"currentGrid"
+			],
+			[
+				"rese",
+				"resetArrowPosition"
+			],
+			[
+				"current",
+				"currentMenuContext"
+			],
+			[
+				"selec",
+				"uiSelectionArrow"
+			],
+			[
+				"ren",
+				"renderMenu"
+			],
+			[
+				"ui",
+				"uiSelectionArrow"
+			],
+			[
+				"ba",
+				"battleBox"
+			],
+			[
+				"ASSET",
+				"ASSETS_FONT"
+			],
+			[
+				"sprite",
+				"spritesheet"
+			],
+			[
+				"to",
+				"toString"
+			],
+			[
+				"move",
+				"moveCategories"
+			],
+			[
+				"eff",
+				"effect2Args"
+			],
+			[
+				"effe",
+				"effect1Args"
+			],
+			[
+				"stage",
+				"stageSpriteSheet"
+			],
+			[
+				"baseSp",
+				"baseSpecialDefense"
+			],
+			[
+				"calc",
+				"calcPokemonHP"
+			],
+			[
+				"spe",
+				"specialDefense"
+			],
+			[
+				"cha",
+				"characterClass"
+			],
+			[
+				"con",
+				"confirmButton"
+			],
+			[
+				"h",
+				"height"
+			],
+			[
+				"me",
+				"meta	Tag"
+			],
+			[
+				"Wea",
+				"weapon"
+			],
+			[
+				"word",
+				"word_last_half"
+			],
+			[
+				"tech",
+				"technologyrating"
+			],
+			[
+				"pre",
+				"prefix"
+			],
+			[
+				"rand",
+				"random_prefix"
+			],
+			[
+				"playe",
+				"player_class1"
+			],
+			[
+				"player_",
+				"player_name"
+			],
+			[
+				"class",
+				"class_info"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "game.js",
+			"settings":
+			{
+				"buffer_size": 12244,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/WaddlesMcSqueezy/AppData/Roaming/Wargaming.net/WorldOfTanks/preferences.xml",
+			"settings":
+			{
+				"buffer_size": 20480,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "easystar.js",
+			"settings":
+			{
+				"buffer_size": 28755,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "assets/map.json",
+			"settings":
+			{
+				"buffer_size": 3797,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "phaserpathfinding.js",
+			"settings":
+			{
+				"buffer_size": 18465,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/WaddlesMcSqueezy/Desktop/JAVASCRIPT/phaser_plugin_pathfinding-master/src/Game.js",
+			"settings":
+			{
+				"buffer_size": 2363,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/C/Users/WaddlesMcSqueezy/Desktop/JAVASCRIPT/phaser_plugin_pathfinding-master/assets/desert.json",
+			"settings":
+			{
+				"buffer_size": 7043,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "game.html",
+			"settings":
+			{
+				"buffer_size": 833,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "Packages/Python/Python.sublime-build",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/Python/Python.sublime-build",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					"Syntax Check"
+				]
+			],
+			[
+				"Packages/Python/Python.sublime-build",
+				""
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/WaddlesMcSqueezy/Desktop/JAVASCRIPT/DungeonCrawlersJS/assets/map.json",
+		"/C/Users/WaddlesMcSqueezy/Desktop/JAVASCRIPT/phaser_plugin_pathfinding-master/assets/desert.json",
+		"/C/Users/WaddlesMcSqueezy/Desktop/JAVASCRIPT/phaser_plugin_pathfinding-master/bower.json",
+		"/C/Users/WaddlesMcSqueezy/Desktop/JAVASCRIPT/Corporate Espionage/game.js",
+		"/D/SteamLibrary/steamapps/common/Galactic Civilizations II - Ultimate Edition/Data/English/RaceConfig.xml",
+		"/C/Users/WaddlesMcSqueezy/Documents/My Games/GC2TwilightArnor/The Draconis Combine.raceconfigxml",
+		"/D/SteamLibrary/steamapps/common/Galactic Civilizations II - Ultimate Edition/Mods/Covenant/ModDescription.xml",
+		"/C/Users/WaddlesMcSqueezy/Desktop/Read me file.doc",
+		"/D/SteamLibrary/steamapps/common/Galactic Civilizations II - Ultimate Edition/Mods/BattleTech/ModDescription.xml",
+		"/D/SteamLibrary/steamapps/common/Galactic Civilizations II - Ultimate Edition/Mods/Example/ModDescription.xml",
+		"/D/SteamLibrary/steamapps/common/Galactic Civilizations II - Ultimate Edition/Mods/Default/ModDescription.xml",
+		"/C/Users/WaddlesMcSqueezy/Desktop/JAVASCRIPT/DungeonCrawlersJS/content/classes.json",
+		"/C/Users/WaddlesMcSqueezy/Desktop/JAVASCRIPT/DungeonCrawlersJS/easystar.js",
+		"/C/Users/WaddlesMcSqueezy/Desktop/JAVASCRIPT/DungeonCrawlersJS/game.html",
+		"/C/Users/WaddlesMcSqueezy/Desktop/JAVASCRIPT/DungeonCrawlersJS/content/items.json",
+		"/C/Users/WaddlesMcSqueezy/Desktop/JAVASCRIPT/DungeonCrawlersJS/content/player.json",
+		"/C/Users/WaddlesMcSqueezy/Desktop/JAVASCRIPT/scifiPlanetGenerator/planetgen.js",
+		"/C/Users/WaddlesMcSqueezy/Desktop/JAVASCRIPT/DungeonCrawlersJS/namegen.js",
+		"/C/Users/WaddlesMcSqueezy/Desktop/JAVASCRIPT/DungeonCrawlersJS/game.js",
+		"/C/Users/WaddlesMcSqueezy/Desktop/JAVASCRIPT/Corporate Espionage/namegen.js",
+		"/D/SteamLibrary/steamapps/common/Fallout/DATA/SCRIPTS/BITSBOB.INT",
+		"/D/SteamLibrary/steamapps/common/Fallout/DATA/TEXT/ENGLISH/GAME/COMBAT.MSG",
+		"/D/SteamLibrary/steamapps/common/Fallout/DATA/TEXT/ENGLISH/DIALOG/RAZOR.MSG",
+		"/D/SteamLibrary/steamapps/common/Fallout/DATA/SAVEGAME/SLOT01/SAVE.DAT",
+		"/D/SteamLibrary/steamapps/common/Fallout/DATA/MAPS/BROHDENT.edg",
+		"/C/Users/WaddlesMcSqueezy/Desktop/JAVASCRIPT/DungeonCrawlersJS/node_modules/easystarjs/src/easystar.js",
+		"/C/Users/WaddlesMcSqueezy/Desktop/easystar.js",
+		"/D/SteamLibrary/steamapps/common/Fallout New Vegas/Data/textures/fonts/DarN_FranKleinBold_14.fnt",
+		"/D/SteamLibrary/steamapps/common/Fallout New Vegas/Data/textures/fonts/DarN_FranKleinBold_14.tex",
+		"/C/Users/WaddlesMcSqueezy/Desktop/JAVASCRIPT/DungeonCrawlersJS/player.json",
+		"/C/Users/WaddlesMcSqueezy/Desktop/JAVASCRIPT/Corporate Espionage/content/keys.json",
+		"/C/Users/WaddlesMcSqueezy/Desktop/JAVASCRIPT/Corporate Espionage/game.html",
+		"/C/Users/WaddlesMcSqueezy/Desktop/JAVASCRIPT/scifiPlanetGenerator/content/racenames.json",
+		"/C/Users/WaddlesMcSqueezy/Desktop/JAVASCRIPT/DungeonCrawlersJS/content/old_sword.js",
+		"/C/Users/WaddlesMcSqueezy/Desktop/JAVASCRIPT/game/game.js",
+		"/C/Users/WaddlesMcSqueezy/Desktop/JAVASCRIPT/game/player.json",
+		"/C/Users/WaddlesMcSqueezy/Desktop/JAVASCRIPT/DungeonCrawlersJS/phaser.js",
+		"/C/Users/WaddlesMcSqueezy/Desktop/JAVASCRIPT/DungeonCrawlersJS/content/effects.js",
+		"/C/Users/WaddlesMcSqueezy/Desktop/JAVASCRIPT/DungeonCrawlersJS/content/quests.json",
+		"/D/Games/MekTek/Mechwarrior Mercenaries - Mektek Mekpak/autoconfig_MERCS.exe",
+		"/C/Users/WaddlesMcSqueezy/Desktop/JAVASCRIPT/DungeonCrawlersJS/items.json",
+		"/C/Users/WaddlesMcSqueezy/Desktop/JAVASCRIPT/DungeonCrawlersJS/content/old_sword.json",
+		"/C/Users/WaddlesMcSqueezy/Desktop/JAVASCRIPT/DungeonCrawlersJS/assets/map1.json",
+		"/C/Users/WaddlesMcSqueezy/Desktop/JAVASCRIPT/DungeonCrawlersJS/assets/map1..json",
+		"/C/Users/WaddlesMcSqueezy/Desktop/JAVASCRIPT/scifiPlanetGenerator/content/names.json",
+		"/C/Users/WaddlesMcSqueezy/Desktop/JAVASCRIPT/scifiPlanetGenerator/package.json",
+		"/D/SteamLibrary/steamapps/common/No Man's Sky/Binaries/SETTINGS/TKGRAPHICSSETTINGS.MXML",
+		"/C/Users/WaddlesMcSqueezy/Desktop/JAVASCRIPT/scifiPlanetGenerator/planetgen.html",
+		"/C/Users/WaddlesMcSqueezy/Desktop/JAVASCRIPT/PokemonWorldTournamentJS (PWTJS)/game.js",
+		"/C/Users/WaddlesMcSqueezy/Desktop/JAVASCRIPT/planetgen.js",
+		"/C/Users/WaddlesMcSqueezy/Desktop/JAVASCRIPT/planetgen.html",
+		"/C/Users/WaddlesMcSqueezy/Desktop/JAVASCRIPT/PokemonWorldTournamentJS (PWTJS)/Example Pokemon JSON.json",
+		"/C/Users/WaddlesMcSqueezy/Desktop/JAVASCRIPT/PokemonWorldTournamentJS (PWTJS)/content/player.json",
+		"/C/Users/WaddlesMcSqueezy/Desktop/JAVASCRIPT/PokemonWorldTournamentJS (PWTJS)/content/pokemonMoves.json",
+		"/D/SteamLibrary/steamapps/common/No Man's Sky/Binaries/SETTINGS/TKGAMESETTINGS.MXML",
+		"/C/Users/WaddlesMcSqueezy/Desktop/JAVASCRIPT/PokemonWorldTournamentJS (PWTJS)/content/pokemon.json",
+		"/C/Users/WaddlesMcSqueezy/Desktop/JAVASCRIPT/PokemonWorldTournamentJS (PWTJS)/game.html",
+		"/C/Users/WaddlesMcSqueezy/Desktop/JAVASCRIPT/PokemonWorldTournamentJS (PWTJS)/player.json",
+		"/C/Users/WaddlesMcSqueezy/Desktop/JAVASCRIPT/PokemonWorldTournamentJS (PWTJS)/pokemon.json",
+		"/C/Users/WaddlesMcSqueezy/Desktop/font.xml",
+		"/C/Users/WaddlesMcSqueezy/AppData/Local/Temp/Temp1_phaser-examples-master.zip/phaser-examples-master/examples/text/retro font 2.js",
+		"/C/Users/WaddlesMcSqueezy/Desktop/JAVASCRIPT/PokemonWorldTournamentJS (PWTJS)/phaser.js",
+		"/C/Users/WaddlesMcSqueezy/AppData/Local/Temp/Temp1_phaser-examples-master.zip/phaser-examples-master/examples/text/center text.js",
+		"/C/Users/WaddlesMcSqueezy/AppData/Local/Temp/Temp1_phaser-examples-master.zip/phaser-examples-master/examples/text/retro font 1.js",
+		"/C/Users/WaddlesMcSqueezy/AppData/Local/Temp/Temp1_phaser-examples-master.zip/phaser-examples-master/examples/assets/asset-pack1.json",
+		"/C/Users/WaddlesMcSqueezy/Desktop/JAVASCRIPT/PokemonWorldTournamentJS (PWTJS)/player - Copy.json",
+		"/C/Users/WaddlesMcSqueezy/Desktop/JAVASCRIPT/DungeonCrawlersJS/boo.js",
+		"/C/Users/WaddlesMcSqueezy/Desktop/JAVASCRIPT/phaser tut/js/game.js",
+		"/C/Users/WaddlesMcSqueezy/Desktop/JAVASCRIPT/phaser tut/part4.html",
+		"/C/Users/WaddlesMcSqueezy/Desktop/JAVASCRIPT/phaser tut/part1.html",
+		"/C/Users/WaddlesMcSqueezy/Desktop/JAVASCRIPT/phaser tut/part3.html",
+		"/C/Users/WaddlesMcSqueezy/Desktop/JAVASCRIPT/phaser tut/part2.html",
+		"/C/Users/WaddlesMcSqueezy/Desktop/JAVASCRIPT/player.json",
+		"/C/Users/WaddlesMcSqueezy/Desktop/JAVASCRIPT/game.js",
+		"/C/Users/WaddlesMcSqueezy/Desktop/JAVASCRIPT/game.html",
+		"/D/SteamLibrary/steamapps/common/Fallout New Vegas/Data/Menus/barter_menu.xml",
+		"/C/PYGAMES/pytest.py",
+		"/C/text-tools/vowel_counter.py",
+		"/C/PYGAMES/pygame_test/app.py",
+		"/C/Users/WaddlesMcSqueezy/Documents/DyingLight/out/settings/video.scr",
+		"/C/Users/WaddlesMcSqueezy/workspace/dungeon-crawlers/src/main/resources/items.json",
+		"/C/Users/WADDLE~1/AppData/Local/Temp/7zO82F21DE6/MANIFEST.MF",
+		"/C/Users/WaddlesMcSqueezy/Desktop/art/concept/placeholder file",
+		"/C/Users/WaddlesMcSqueezy/Desktop/art/asset/placeholder file",
+		"/C/Users/WaddlesMcSqueezy/Documents/Dungeon Crawlers/Assets/Items.json",
+		"/C/Users/WaddlesMcSqueezy/Documents/Dungeon Crawlers/Assets/Items.xml",
+		"/C/Users/WaddlesMcSqueezy/Documents/Dungeon Crawlers/GameData/Items.xml",
+		"/C/PYGAMES/complex/main.py",
+		"/C/Users/WaddlesMcSqueezy/Documents/Dungeon Crawlers/GameData/Prefixes.xml",
+		"/C/PYGAMES/complex/app.py",
+		"/C/Users/WaddlesMcSqueezy/Desktop/JAVASCRIPT/melonJS.js",
+		"/C/Users/WaddlesMcSqueezy/Desktop/Block Bunny/src/com/neet/blockbunny/handlers/MyContactListener.java",
+		"/C/Users/WaddlesMcSqueezy/Desktop/Block Bunny/src/com/neet/blockbunny/states/Play.java",
+		"/D/SteamLibrary/steamapps/common/ProjectZomboid/zombie/gameStates/MainScreenState.class",
+		"/D/SteamLibrary/steamapps/common/Hearts of Iron IV/checksum_manifest.txt",
+		"/C/Users/WaddlesMcSqueezy/workspace/dungeon-crawlers/src/main/java/actor/Player.java",
+		"/C/Users/WaddlesMcSqueezy/Documents/My Games/Tabletop Simulator/Mods/Workshop/375081120.json",
+		"/C/Users/WaddlesMcSqueezy/AppData/Local/Temp/7zO82D7D3FA/empty.json",
+		"/C/Users/WaddlesMcSqueezy/AppData/Roaming/.minecraft/assets/indexes/1.9.json",
+		"/C/Users/WaddlesMcSqueezy/Documents/Dungeon Crawlers/GameData/Items - Copy.xml",
+		"/D/SimBin/GTR Evolution Offline/GameData/Teams/GT_Pro/Lister_Storm/2008_Lister_Storm.aud",
+		"/D/SteamLibrary/steamapps/common/Kerbal Space Program/saves/Iron Eagles/quicksave.sfs",
+		"/C/Users/WaddlesMcSqueezy/workspace/seven-seas/resources/weapons.json",
+		"/C/PYGAMES/seven_seas/Ship.py",
+		"/C/PYGAMES/seven_seas/App.py",
+		"/D/SteamLibrary/steamapps/common/Kerbal Space Program/saves/Iron Eagles/persistent.sfs",
+		"/D/SimBin/GTR2/UserData/Ian Harmon/Ian Harmon.PLR",
+		"/C/Users/WaddlesMcSqueezy/Documents/Dungeon Crawlers/Dungeon Crawlers.userprefs",
+		"/D/SteamLibrary/steamapps/common/Kerbal Space Program/saves/Iron Eagles/quicksaveolds.sfs",
+		"/C/Users/WaddlesMcSqueezy/AppData/Local/Temp/Temp1_Login.zip/Login/src/login/Login.java",
+		"/C/wolf-in-exile-games/endless-dungeon/db/items.db",
+		"/C/wolf-in-exile-games/endless-dungeon/db/chinook.db",
+		"/C/text-tools/alife/creatures.py",
+		"/C/text-tools/alife.py",
+		"/C/text-tools/reverser.py",
+		"/C/text-tools/pig_latin.py",
+		"/D/GOG Games/S.T.A.L.K.E.R. Call of Pripyat/gamedata vanilla/configs/weapons/upgrades/w_abakan_up.ltx",
+		"/C/PYGAMES/pywumpus-1.2/pywumpus.py",
+		"/C/PYGAMES/pywumpus-1.2/setup.py",
+		"/C/PYGAMES/pygame_test/items.json",
+		"/C/PYGAMES/complex/leaders.py",
+		"/C/PYGAMES/complex/engine.py",
+		"/C/PYGAMES/complex/commands.py",
+		"/C/PYTOOLS/word-tools/vowel_counter.py",
+		"/C/PYTOOLS/word-tools/pig_latin.py",
+		"/C/PYGAMES/pygame_test/brick-inator.py",
+		"/C/Users/WaddlesMcSqueezy/AppData/Roaming/.technic/assets/virtual/legacy/READ_ME_I_AM_VERY_IMPORTANT.txt",
+		"/D/GOG Games/S.T.A.L.K.E.R. Call of Pripyat/gamedata/configs/creatures/actor.ltx"
+	],
+	"find":
+	{
+		"height": 30.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			",1,1,1,1,1,1,1,1,1,1,1,1,1,1,",
+			"1,1,1,1,1,1,1,1,1,1,1,1,1,1,",
+			"1",
+			"0",
+			"1",
+			"1,\n",
+			"1\n",
+			"10\n",
+			");\n",
+			"russianVoice1",
+			"onePad",
+			"inhabitant",
+			"return map",
+			"intelligent",
+			",}",
+			"pokemon",
+			"uiActionSelect",
+			"cries",
+			"pikapoo",
+			"Hands",
+			"jerkins",
+			"	trimPitch = 0\n				trimYaw = 0\n				trimRoll = 0\n				mainThrottle = 0.5\n			}\n			VESSELMODULES\n			{\n				FlightIntegrator\n				{\n				}\n			}\n		}",
+			"jerkins",
+			"debris",
+			"parachuteradial",
+			"wheel1",
+			"wheel",
+			"alry",
+			"True",
+			"kis",
+			"weight",
+			"health",
+			"=0.275,	0.285",
+			" 0.045,	0.05",
+			"command",
+			"davion",
+			"player",
+			"player_class",
+			"printplayerinfo",
+			"item",
+			"playercommand()",
+			"class_info",
+			"confirm = input ",
+			"if confirm =",
+			"player_class"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			",0,0,0,0,0,0,0,0,0,0,0,0,0,0,",
+			"0",
+			"1",
+			"0",
+			"speakNumbers(cipherText)",
+			"oneTimePad",
+			"Name",
+			"normal",
+			"primitive",
+			"},",
+			"player",
+			"uiActionBox",
+			"pikachu",
+			"Slot",
+			"= 0.275,	0.285",
+			"0.275,	0.285",
+			"leaderchoice",
+			"kurita",
+			"marik",
+			"steiner",
+			"return player_class",
+			"player",
+			"confirm = playercommand()",
+			"getplayerinfo",
+			"print",
+			"if confirm ==",
+			"player_class_num"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "game.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 12244,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7039,
+								7039
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 6360.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/C/Users/WaddlesMcSqueezy/AppData/Roaming/Wargaming.net/WorldOfTanks/preferences.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 20480,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								410,
+								410
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "easystar.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 28755,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								28755,
+								28755
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 20722.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "assets/map.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3797,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1615,
+								1615
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "phaserpathfinding.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 18465,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								18465,
+								18465
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 15202.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/C/Users/WaddlesMcSqueezy/Desktop/JAVASCRIPT/phaser_plugin_pathfinding-master/src/Game.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2363,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2257,
+								2257
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1560.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/C/Users/WaddlesMcSqueezy/Desktop/JAVASCRIPT/phaser_plugin_pathfinding-master/assets/desert.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7043,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "game.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 833,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								301,
+								301
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 30.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 130.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "",
+	"replace":
+	{
+		"height": 80.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"C:\\endlessDungeonPython\\endlessDungeon.py"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 188.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

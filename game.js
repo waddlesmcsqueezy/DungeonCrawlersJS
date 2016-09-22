@@ -8,28 +8,26 @@ const WORLD_SCALE = 64;
 
 //DEFINE PATHFINDING V
 
-// var pathfinder = new EasyStar.js();
+var map =       [[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+	             [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+	             [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+	             [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+	             [1,0,0,0,0,0,0,0,0,1,1,0,0,0,0,1],
+	             [1,0,0,0,0,0,0,1,1,1,0,0,0,0,0,1],
+	             [1,0,0,0,0,0,1,1,0,0,0,0,0,0,0,1],
+	             [1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1],
+	             [1,0,0,0,0,1,1,0,0,0,0,1,0,0,0,1],
+	             [1,0,0,0,1,1,0,0,0,0,1,1,1,0,0,1],
+	             [1,0,0,0,1,0,0,0,0,0,1,1,1,0,0,1],
+	             [1,0,0,0,0,0,0,0,0,1,1,1,0,0,0,1],
+	             [1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1],
+	             [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+	             [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+	             [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]];
 
-// pathfinder.setGrid([1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-// 	             [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-// 	             [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-// 	             [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-// 	             [1,0,0,0,0,0,0,0,0,1,1,0,0,0,0,1],
-// 	             [1,0,0,0,0,0,0,1,1,1,0,0,0,0,0,1],
-// 	             [1,0,0,0,0,0,1,1,0,0,0,0,0,0,0,1],
-// 	             [1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1],
-// 	             [1,0,0,0,0,1,1,0,0,0,0,1,0,0,0,1],
-// 	             [1,0,0,0,1,1,0,0,0,0,1,1,1,0,0,1],
-// 	             [1,0,0,0,1,0,0,0,0,0,1,1,1,0,0,1],
-// 	             [1,0,0,0,0,0,0,0,0,1,1,1,0,0,0,1],
-// 	             [1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1],
-// 	             [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-// 	             [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-// 	             [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]);
+var pathfinder = new EasyStar.js();
 
-// pathfinder.setAcceptableTiles([0]);
-
-var pathfinder;
+pathfinder.setGrid(map);
 
 //END PATHFINDING ^
 
@@ -120,13 +118,17 @@ function create() {
 
     map = new GameMap('map', 'wall', 'floor', 'objects', 'tiles');
 
-    player = new Actor('player', 'placeholder', 10, 10, 10, 'highwayman', 64, 64, true);
+    playerClass = new LycanClass();
 
-    enemy = new Actor('enemy1', 'placeholder', 10, 10, 10, 'highwayman', 64, 64, true);
+    enemyClass = new EnemyClass();
+
+    player = new Actor('player', playerClass, 'highwayman');
+
+    enemy = new Actor('enemy1', enemyClass, 'highwayman');
 
     player.sprite.position.setTo(64, 64);
 
-    enemy.sprite.position.setTo(128, 64);
+    enemy.sprite.position.setTo(512, 64);
 
     console.log(player.gridX);
     console.log(player.gridY);
@@ -136,12 +138,10 @@ function create() {
     hint.smoothed = false;
     hint.visible = false;
 
-    var walkables = [1];
-
-    pathfinder = game.plugins.add(Phaser.Plugin.PathFinderPlugin);
-    pathfinder.setGrid(map.tileMap.layers[0].data, walkables);
-
     // game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+
+    pathfinder.setAcceptableTiles([0]);
+    //easystar.enableCornerCutting();
 }
 
 //END CREATING GAME WORLD ^
@@ -157,6 +157,7 @@ function update() {
     game.camera.x = (player.sprite.x - (game.width / 2)) + 32;
     game.camera.y = (player.sprite.y - (game.height / 2)) + 32;
 
+    enemy.updateGrid();
     player.updateGrid();
 
     if (player.turnsLeft > 0) {
@@ -214,6 +215,7 @@ function update() {
     if (player.turnsLeft <= 0) {
 
         //enemy turn
+        findPath(enemy, player.gridX, player.gridY);
 
         //reset player turns
         player.resetTurns();
@@ -272,16 +274,6 @@ class Actor {
         return map.tileMap.getTile(this.gridX, this.gridY, map.objects);
     }
 
-    findPathTo(tilex, tiley) {
-        pathfinder.setCallbackFunction(function(path) {
-            path = path || [];
-        });
-
-        pathfinder.preparePathCalculation([0,0], [tilex,tiley]);
-        pathfinder.calculatePath();
-        console.log(path);
-    }
-
     move(x, y) {
         game.add.tween(this.sprite).to({
                 x: this.sprite.x + x * WORLD_SCALE,
@@ -310,6 +302,10 @@ class Actor {
     updateGrid() {
         this.gridX = this.sprite.x / 64;
         this.gridY = this.sprite.y / 64;
+    }
+
+    findPathTo(destinationX, destinationY) { //tilex & tiley = desired location - likely player's position.
+
     }
 
     addItemToInventory(item) {
@@ -437,13 +433,7 @@ class CharacterClass {
 class LycanClass extends CharacterClass {
 	constructor() {
 		super(classes.lycan);
-	}
-
-	proc() {
-		if (skillLevel == 0){
-			if (this.health < 0.20 * this.health) {this.transformToBeast();}
-		}
-	}
+	}	
 
 	transformToBeast() {
 		this.agility += 5;
@@ -451,9 +441,28 @@ class LycanClass extends CharacterClass {
 		this.strength += 5;
 		if(strength <= 0) {this.strength = 1;}
 	}
+
 	transformFromBeast() {
 		this.agility -= 5;
 		this.strength -= 5;
+	}
+
+	proc() {
+		if (skillLevel == 0){
+			if (this.health < 0.20 * this.health) {this.transformToBeast();}
+		}
+	}
+}
+
+class EnemyClass extends CharacterClass {
+	constructor() {
+		super(classes.enemy);
+	}
+
+	proc() {
+		if (skillLevel == 0){
+			
+		}
 	}
 }
 
@@ -493,4 +502,23 @@ class LeveledList {
 			throw "DUNGEON CRAWLERS ERROR: LEVELED LIST INVALID OR DOESNT EXIST\n IF THIS ERROR CONTINUES, SEND THE DEVELOPER A SCREENSHOT OF THE CONSOLE.";
 		}
 	}
+}
+
+function findPath(entity, destinationX, destinationY) {
+    pathfinder.findPath(entity.gridX, entity.gridY, destinationX, destinationY, function( path ) {
+        if (path === null) {
+            console.log("The path to the destination point was not found.");
+        } else {
+          
+            for (var i = 1; i <= entity.turnsLeft; i++)
+            {
+                console.log("P: " + i + ", X: " + path[i].x + ", Y: " + path[i].y);
+                console.log(path[i].x + " " + path[i].y)
+                entity.move(path[i].x - entity.gridX, path[i].y - entity.gridY);
+            }
+            console.log(path);
+        }
+    });
+    
+    pathfinder.calculate();
 }

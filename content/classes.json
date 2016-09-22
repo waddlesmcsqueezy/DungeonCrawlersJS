@@ -1,5 +1,8 @@
 classes = {
 
 	"lycan" : {"name" : "Lycan", "description" : "Clawing from the depths of immortality, the lycan is the bane of all that is holy.",
-	 "baseAgility" : 3, "baseStrength" : 3, "baseSpeech" : 2, "skillTree" : {"0" : {"name" : "Beast Blood", "description" : "When health drops below 20%, transform to Lycan form for 10 turns."}}}
+	 "baseAgility" : 3, "baseStrength" : 3, "baseSpeech" : 2, "skillTree" : {"0" : {"name" : "Beast Blood", "description" : "When health drops below 20%, transform to Lycan form for 10 turns."}}},
+
+	 "enemy" : {"name" : "Enemy", "description" : "Some generic enemy.",
+	 "baseAgility" : 5, "baseStrength" : 5, "baseSpeech" : 5, "skillTree" : {"0" : {"name" : "ability", "description" : "i dont fucking know mate"}}}
 }
