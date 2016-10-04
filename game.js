@@ -1,3 +1,5 @@
+
+
 var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'Dungeon Crawlers', {
     preload: preload,
     create: create,
@@ -33,54 +35,25 @@ pathfinder.setGrid(map);
 
 //DEFINE ENUMS! V
 
-var abilityTypes = {
-    PROC: 1,
-    PASSIVE: 2,
-    ACTIVE: 3
+var plugins = {
+    COLLECTIONS: "plugins/collections/",
 }
 
-var potionTypes = {
-    HEALTH: 1,
-    BUFF: 2
-}
-
-itemTypes = {
-	WEAPON: 1, // weapon
-	ARMOR: 2, //armor item
-	FOOD: 3, //food item
-	AID: 4, // aid/health item
-	DRUG: 5, //drug
-	PART: 6, //crafting ingredient
-	QST: 7, //quest item
-}
-
-weaponTypes = {
-	MELEE: 1,
-	RANGED: 2,
-}
-
-var itemTiers = {
-    WHITE: 1,
-    GREEN: 2,
-    BLUE: 3,
-    PURPLE: 4,
-    PINK: 5,
-    RED: 6,
-    ORANGE: 7
-}
-
-var armorSlots = {
-    HEAD: 1,
-    TORSO: 2
-}
-
-var equipSlots = {
-    RIGHT: 1,
-    LEFT: 2,
-    TWO: 3
+var errors = {
+    genericError: "DUNGEON CRAWLERS ERROR",
+    invalidItem: "DUNGEON CRAWLERS ERROR : 001; Invalid Item",
+    invalidLeveledList: "DUNGEON CRAWLERS ERROR : 002; Invalid LeveledList",
+    invalidRefId: "DUNGEON CRAWLERS ERROR : 003; Invalid RefId",
+    invalidWeaponType: "DUNGEON CRAWLERS ERROR : 003, Invalid weapon type"
 }
 
 //END ENUMS ^
+
+// REQUIRES V
+
+// var Map = require(plugins.COLLECTIONS + "map");
+
+//END REQUIRES ^
 
 //BEING LOADING V
 
@@ -95,6 +68,17 @@ function preload() {
 
     game.load.image('hint', 'assets/hint.png');
     game.load.image('inv', 'assets/inv.png');
+
+    game.load.image('sprite_sword', 'assets/sword.png');
+
+    itemManager = new ItemManager();
+
+    // for (var key in items) {
+    //   if (items.hasOwnProperty(key)) {
+    //     itemManager.collection[Guid.raw()] = items[key];
+    //     console.log(key + " -> " + items[key]);
+    //   }
+    // }
 }
 
 //END LOADING ^
@@ -150,72 +134,23 @@ function create() {
 
 function update() {
 
-	hint.x = game.input.mousePointer.x;
+    // hint.x = game.input.mousePointer.x;
 
-	hint.y = game.input.mousePointer.y - hint.height;
+    // hint.y = game.input.mousePointer.y - hint.height;
 
     game.camera.x = (player.sprite.x - (game.width / 2)) + 32;
     game.camera.y = (player.sprite.y - (game.height / 2)) + 32;
 
-    enemy.updateGrid();
-    player.updateGrid();
-
     if (player.turnsLeft > 0) {
-
-        if (!player.isMoving) {
-
-            if (cursors.up.isDown) {
-                if (player.getWallAbove(map) == null) {
-                    player.isMoving = true;
-                    player.move(0, -1);
-                    player.useTurn();
-                    console.log(player.getWallAbove(map))
-                } else {
-                    console.log('tile is solid')
-                }
-            } else if (cursors.down.isDown) {
-                if (player.getWallBelow(map) == null) {
-                    player.isMoving = true;
-                    player.move(0, 1);
-                    player.useTurn();
-                    console.log(player.getWallBelow(map))
-                } else {
-                    console.log('tile is solid')
-                }
-            } else if (cursors.left.isDown) {
-                if (player.getWallLeft(map) == null) {
-                    player.isMoving = true;
-                    player.move(-1, 0);
-                    player.useTurn();
-                    console.log(player.getWallLeft(map))
-                } else {
-                    console.log('tile is solid')
-                }
-            } else if (cursors.right.isDown) {
-                if (player.getWallRight(map) == null) {
-                    player.isMoving = true;
-                    player.move(1, 0);
-                    player.useTurn();
-                    console.log(player.getWallRight(map))
-                } else {
-                    console.log('tile is solid')
-                }
-            } else if (interact.isDown) {
-                if (player.getObjectUnder(map) != null) {
-                    console.log('getting items')
-                    map.removeObject(player.gridX, player.gridY);
-                    player.useTurn();
-                } else {
-                    console.log('nothing underfoot')
-                }
-            }
-        }
+        playerTurn();
+        player.updateGrid();
     }
 
-    if (player.turnsLeft <= 0) {
+    if (player.turnsLeft <= 0 && !player.isMoving) {
 
         //enemy turn
-        findPath(enemy, player.gridX, player.gridY);
+        enemyTurn();
+        enemy.updateGrid();
 
         //reset player turns
         player.resetTurns();
@@ -227,6 +162,13 @@ function update() {
 
 //BEGIN CLASS DEFINITIONS V
 
+// ______            _                     _ 
+// | ___ \          | |                   | |
+// | |_/ / __ _  ___| | __   ___ _ __   __| |
+// | ___ \/ _` |/ __| |/ /  / _ \ '_ \ / _` |
+// | |_/ / (_| | (__|   <  |  __/ | | | (_| |
+// \____/ \__,_|\___|_|\_\  \___|_| |_|\__,_|                                 
+
 class Actor {
     constructor(name, characterClass, sprite) {
     	this.name = name;
@@ -235,7 +177,7 @@ class Actor {
 
         //inventory
         this.maxWeight = (((this.strength + 5) * 15) / 1.5);
-        this.inventory = [];
+        this.inventory = new Container();
 
         //turn based logic
         this.maxTurns = 1;
@@ -303,39 +245,6 @@ class Actor {
         this.gridX = this.sprite.x / 64;
         this.gridY = this.sprite.y / 64;
     }
-
-    findPathTo(destinationX, destinationY) { //tilex & tiley = desired location - likely player's position.
-
-    }
-
-    addItemToInventory(item) {
-        if (item != null) {
-	        if (this.inventory[0] != null) {
-	            if (item.weight + this.getInventoryWeight() < this.maxWeight) {
-	                this.inventory.push(item);
-	            } else { console.log("Item would exceed carry limit."); }
-	        } else { this.inventory.push(item); }
-	    } else { console.log("DUNGEON CRAWLERS: Not a valid Item."); }
-    }
-
-    removeItemFromInventory(item) {
-        if (typeof item == "string") {
-            var itemIndex = this.inventory.indexOf(item);
-            this.inventory.splice(itemIndex, 1);
-        }
-
-        if (typeof item == "number") {
-            this.inventory.splice(item, 1);
-        }
-    }
-
-    getInventoryWeight() {
-        var weight = 0;
-        for (var i = 0; i < this.inventory.length; i++) {
-            weight += this.inventory[i].weight;
-        }
-        return weight;
-    }
 }
 
 class GameMap {
@@ -368,14 +277,22 @@ class GameMap {
     }
 }
 
+//  _____                            _             
+// |  __ \                          | |            
+// | |  \/ __ _ _ __ ___   ___ _ __ | | __ _ _   _ 
+// | | __ / _` | '_ ` _ \ / _ \ '_ \| |/ _` | | | |
+// | |_\ \ (_| | | | | | |  __/ |_) | | (_| | |_| |
+//  \____/\__,_|_| |_| |_|\___| .__/|_|\__,_|\__, |
+//                            | |             __/ |
+//                            |_|            |___/ 
+
 class Quest {
-    constructor(name, description, exp, reward, itemReward, stages) {
-        this.name = name;
-        this.description = description;
-        this.exp = exp;
-        this.reward = reward;
-        this.itemReward = itemReward;
-        this.totalStages = totalStages;
+    constructor(quest) {
+        this.name = quest.name;
+        this.description = quest.description;
+        this.exp = quest.exp;
+        this.reward = quest.reward;
+        this.stages = quest.stages;
         this.currentStage = 0;
     }
 
@@ -391,13 +308,13 @@ class Quest {
 }
 
 class Bounty {
-    constructor(name, description, exp, reward, stages) {
-        this.name = name;
-        this.description = description;
-        this.exp = exp;
-        this.reward = reward;
+    constructor(bounty) {
+        this.name = bounty.name;
+        this.description = bounty.description;
+        this.exp = bounty.exp;
+        this.reward = bounty.reward;
+        this.stages = bounty.stages;
         this.currentStage = 0;
-        this.stages = stages;
     }
 
     advanceStage() {
@@ -416,35 +333,31 @@ class CharacterClass {
         //fluff & stats
         this.name = characterClass.name;
         this.description = characterClass.description;
+
         this.agility = characterClass.baseAgility;
+        this.divinity = characterClass.baseDivinity;
+        this.heresy = characterClass.baseHeresy;
+        this.intuition = characterClass.baseIntuition;
         this.strength = characterClass.baseStrength;
         this.speech = characterClass.baseSpeech;
-        this.health = ((((this.strength + this.agility) + 2) * 10) / 5);
 
-        this.skillLevel = 0; //This is the player's current skill tree tier; starts at 0 for all skill trees; 
+        this.maxHealth = ((((this.strength + this.agility) + 2) * 10) / 5);
+        this.currentHealth = this.maxHealth;
 
-        this.quests;
-        this.completedQuests;
-        this.bounties;
-        this.completedBounties;
+        this.skills = new Map(); //This is the player's current skill tree tier; starts at 0 for all skill trees;
+
+        this.spells = new Set(); //Player's current collection of spells. Can only have 1 of each spell, infinite uses.
+
+        this.quests = new Map();
+        this.completedQuests = new Map();
+        this.bounties = new Map();
+        this.completedBounties = new Map();
     }
 }
 
 class LycanClass extends CharacterClass {
 	constructor() {
 		super(classes.lycan);
-	}	
-
-	transformToBeast() {
-		this.agility += 5;
-		if(agility <= 0) {this.agility = 1;}
-		this.strength += 5;
-		if(strength <= 0) {this.strength = 1;}
-	}
-
-	transformFromBeast() {
-		this.agility -= 5;
-		this.strength -= 5;
 	}
 
 	proc() {
@@ -468,11 +381,69 @@ class EnemyClass extends CharacterClass {
 
 class Item {
     constructor(item) {
-        this.item = item;
-        if (this.item.sprite != null) {
-            this.sprite = game.add.sprite(0, 0, this.item.sprite);
+        if (item.type == null || item.name == null || item.description == null || item.value == null || item.weight == null || item.tier == null) {
+            throw errors.invalidItem; // + "type: " + item.type + "name: " + item.name + "desc: " + item.description + "value: " + item.value + "wgt: " + item.weight + "tier: " + item.tier
         } else {
+            this.type = item.type;
+            this.name = item.name;
+            this.description = item.description;
+            this.value = item.value;
+            this.weight = item.weight;
+            this.tier = item.tier;
+        }
+
+        if (item.sprite != null) {
+            this.sprite = game.add.sprite(0, 0, item.sprite);
+        } else if (item.sprite == null) {
             this.sprite = game.add.sprite(0, 0, 'error');
+        }
+    }
+}
+
+class Weapon extends Item {
+    constructor(item) {
+        super(item);
+
+        if (item.type != itemTypes.WEAPON || item.damage == null || item.accuracy == null || item.range == null || item.skill1 == null) {
+            throw errors.invalidItem;
+        } else {
+            this.damage = item.damage;
+            this.accuracy = item.accuracy;
+            this.range = item.range;
+            this.skill1 = item.skill1
+            if (item.skill2) {
+                this.skill2 = item.skill2
+            }
+
+            if (item.effect != null) {
+                this.effect = item.effect;
+            }
+        }
+    }
+
+    attack(target) {
+        if (accuracy < 1.0) {
+            if (this.accuracy > (Math.random() * (1.0 - 0.0)) + 0.0) {
+                var damageDealt = Math.round(this.damage - target.strength);
+                target.health -= damageDealt;
+            }
+        }
+    }
+}
+
+class Armor extends Item {
+    constructor(item) {
+        super(item);
+
+        if (item.type != itemTypes.ARMOR || item.protection == null || item.skill1 == null) { 
+            throw errors.invalidItem; 
+        } else {
+            this.protection = item.protection;
+            this.slot = item.slot;
+            this.skill1 = item.skill1
+            if (item.skill2) {
+                this.skill2 = item.skill2
+            }
         }
     }
 }
@@ -489,20 +460,96 @@ class BuffPotion extends Item {
     }
 }
 
+class Spell {
+    constructor(spell) {
+        this.name = spell.name;
+        this.description = spell.name
+    }
+}
+
 class Container {
 	constructor(){
-		inventory = [];
+        this.containingItems = new Map();
+        this.maxWeight = 200;
+    }
 
-	}
+    addItemToInventory(item) {
+        if (item != null) {
+            console.log("Guid: " + item.guid + " | " + "Values: " + item.values);
+            // this.containingItems[item] = item;
+            this.containingItems.set(item.guid, item.values);
+        } else { throw errors.invalidItem; }
+    }
+
+    removeItemFromInventory(refId) {
+        if (item.type != itemTypes.QST) {
+            this.collection.delete(refId);
+        } else if (item.type == itemTypes.QST) { console.log("Can't drop quest items!") }
+    }
+
+    transferItem(refId, container) {
+        if (refId != null) {
+            container.addItemToInventory(refId);
+            this.containingItems.delete(refId);
+        }
+    }
+
+    getInventoryWeight() {
+        var weight = 0;
+        for (var i = 0; i < this.containingItems.length; i++) {
+            weight += this.containingItems[i].weight;
+        }
+        return weight;
+    }
 }
 
 class LeveledList {
 	constructor(list) {
 		if (list == null) {
-			throw "DUNGEON CRAWLERS ERROR: LEVELED LIST INVALID OR DOESNT EXIST\n IF THIS ERROR CONTINUES, SEND THE DEVELOPER A SCREENSHOT OF THE CONSOLE.";
+			throw errors.invalidLeveledList;
 		}
 	}
 }
+
+class ItemManager {
+    constructor() {
+        this.collection = new Map();
+    }
+
+    createSendItem(baseId, container) {
+        if (baseId != null) {
+            switch (baseId.type) {
+                case itemTypes.ARMOR:
+                    var newItem = new Armor(baseId);
+                    break;
+                case itemTypes.WEAPON:
+                    var newItem = new Weapon(baseId);
+                    break;
+                default:
+                    throw errors.invalidWeaponType;
+            }
+            var guid = Guid.raw();
+            console.log("Created new Item: " + guid + " - stats: " + newItem);
+            var itemObject = {"guid" : guid, "values" : newItem};
+            this.sendItemToContainer(itemObject, container);
+        } else { throw errors.invalidItem; }
+    }
+
+    sendItemToContainer(refId, container) {
+        if (refId != null) {
+            container.addItemToInventory(refId);
+        } else { throw errors.invalidRefId; }
+    }
+}
+
+//  _____                  _                 _      
+// |_   _|                | |               (_)     
+//   | |_   _ _ __ _ __   | |     ___   __ _ _  ___ 
+//   | | | | | '__| '_ \  | |    / _ \ / _` | |/ __|
+//   | | |_| | |  | | | | | |___| (_) | (_| | | (__ 
+//   \_/\__,_|_|  |_| |_| \_____/\___/ \__, |_|\___|
+//                                      __/ |       
+//                                     |___/        
 
 function findPath(entity, destinationX, destinationY) {
     pathfinder.findPath(entity.gridX, entity.gridY, destinationX, destinationY, function( path ) {
@@ -521,4 +568,58 @@ function findPath(entity, destinationX, destinationY) {
     });
     
     pathfinder.calculate();
+}
+
+function playerTurn() {
+    if (!player.isMoving) {
+            if (cursors.up.isDown) {
+                if (player.getWallAbove(map) == null) {
+                    player.isMoving = true;
+                    player.move(0, -1);
+                    player.useTurn();
+                    console.log(player.getWallAbove(map))
+                } else {
+                    console.log('tile is solid')
+                }
+            } else if (cursors.down.isDown) {
+                if (player.getWallBelow(map) == null) {
+                    player.isMoving = true;
+                    player.move(0, 1);
+                    player.useTurn();
+                    console.log(player.getWallBelow(map))
+                } else {
+                    console.log('tile is solid')
+                }
+            } else if (cursors.left.isDown) {
+                if (player.getWallLeft(map) == null) {
+                    player.isMoving = true;
+                    player.move(-1, 0);
+                    player.useTurn();
+                    console.log(player.getWallLeft(map))
+                } else {
+                    console.log('tile is solid')
+                }
+            } else if (cursors.right.isDown) {
+                if (player.getWallRight(map) == null) {
+                    player.isMoving = true;
+                    player.move(1, 0);
+                    player.useTurn();
+                    console.log(player.getWallRight(map))
+                } else {
+                    console.log('tile is solid')
+                }
+            } else if (interact.isDown) {
+                if (player.getObjectUnder(map) != null) {
+                    console.log('getting items')
+                    map.removeObject(player.gridX, player.gridY);
+                    player.useTurn();
+                } else {
+                    console.log('nothing underfoot')
+                }
+        }
+    }
+}
+
+function enemyTurn() {
+    findPath(enemy, player.gridX, player.gridY);
 }
